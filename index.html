@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hostageApp">
+<head>
+    <title>Hostage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+
+    <script src="lib/angular.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body ng-controller="HostageController">
+    <div class="container-fluid main-container">
+        <h1>GeeMail</h1>
+        <div class="row">
+            <div class="col-xs-6">
+                <h5>Like Gmail, but worse!</h5>
+            </div>
+            <div class="col-xs-6">
+                <p class="text-right">Billy Bob Jones (bbobjones@geemail.com)</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 no-padding" id="inbox">
+                <div class="email" ng-class="{'unread': !email.read, 'read': email.read}" ng-repeat="email in emails" ng-click="openEmail(email)">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <strong>{{email.from}}</strong>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            {{email.time}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{email.subject}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-9" id="email">
+                <div ng-hide="selectedEmail == null">
+                    <h5>
+                        From: {{selectedEmail.from}}
+                    </h5>
+                    <h5>
+                        Subject: {{selectedEmail.subject}}
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

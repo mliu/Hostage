@@ -1,0 +1,52 @@
+.main-container {
+    padding-top: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.no-padding {
+    padding: none;
+}
+
+#inbox {
+    height: 700px;
+    border: 1px solid #7c7f84;
+    background: #e1e3e8;
+}
+
+#email {
+    border: 1px solid #7c7f84;
+    border-left: none;
+    padding-top: 10px;
+}
+
+.email {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #7c7f84;
+    cursor: pointer;
+}
+
+.email.read:hover {
+    background: #abcccc;
+}
+
+.email.unread:hover {
+    background: #d0e8e8;
+}
+
+.read {
+    background: #e1e3e8;
+}
+
+.unread {
+    background: #fff;
+}
