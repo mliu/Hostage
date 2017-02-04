@@ -7,21 +7,37 @@
 .text-right {
     text-align: right;
 }
+.text-center {
+    text-align: center;
+}
 
 .no-padding {
     padding: none;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+
+.no-weight {
+    font-weight: normal;
 }
 
 #inbox {
     height: 700px;
     border: 1px solid #7c7f84;
     background: #e1e3e8;
+    overflow: scroll;
 }
 
 #email {
+    height: 700px;
+    overflow: scroll;
     border: 1px solid #7c7f84;
     border-left: none;
     padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 100px;
 }
 
 .email {

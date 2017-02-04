@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap-flex.min.css">
     <link rel="stylesheet" type="text/css" href="css/theme.css">
 
+    <script src="lib/moment.min.js"></script>
     <script src="lib/angular.js"></script>
     <script src="js/main.js"></script>
 </head>
@@ -45,11 +46,14 @@
             <div class="col-sm-9" id="email">
                 <div ng-hide="selectedEmail == null">
                     <h5>
-                        From: {{selectedEmail.from}}
+                        From: <span class="no-weight">{{selectedEmail.from}}</span>
                     </h5>
                     <h5>
-                        Subject: {{selectedEmail.subject}}
+                        Subject: <span class="no-weight">{{selectedEmail.subject}}</span>
                     </h5>
+                    <br>
+                    <h3>{{selectedEmail.text}}</h3>
+                    <img ng-src="images/{{selectedEmail.image}}">
                 </div>
             </div>
         </div>
