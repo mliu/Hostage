@@ -2,54 +2,73 @@ var hostageApp = angular.module('hostageApp', []);
 
 hostageApp.controller('HostageController', function HostageController($scope, $timeout) {
   $scope.emails = [
-    {from: "Husband@geemail.com", subject: "Honeymoon photos!", time: moment().format("h:mma"), read: false, text: "Hey babe ;) Photos just came in! Love you 4evr <3 <3", image: "honeymoon.png", trigger: honeymoonEmail},
-    {from: "MommyJones@geemail.com", subject: "Fwd: You will not believe this! WOW!", time: "7:10pm", read: true, text: "Check this out!", image: "poop.jpg", trigger: null}
+    {from: "Husband@geemail.com", subject: "Honeymoon photos!", time: moment().format("h:mma"), showPrimary: false, read: false, text: "Hey babe ;) Photos just came in! Love you 4evr <3 <3", image: "honeymoon.png", trigger: honeymoonEmail},
+    {from: "MommyJones@geemail.com", subject: "Fwd: You will not believe this! WOW!", time: "7:10pm", showPrimary: false, read: true, text: "Check this out!", image: "poop.jpg", trigger: null}
   ];
 
   $scope.selectedEmail = null;
-  var audio;
+  $scope.replyPrimary = false;
+  $scope.primaryEmail = $scope.emails[1];
+
+  var emailEvents = [];
+  var audioLibrary = {
+    "honeymoonEmail": new Audio("audio/recording1.mp3"),
+    "haveHusbandEmail": new Audio("audio/recording2.mp3"),
+    "dontIgnoreEmail": new Audio("audio/recording3.mp3"),
+  };
 
   $scope.openEmail = function(email) {
     email.read = true;
     $scope.selectedEmail = email;
-    if (email.trigger != null) {
+    if (email.trigger != null && emailEvents.indexOf(email.trigger) < 0) {
+      emailEvents.push(email.trigger);
       email.trigger();
     }
   }
 
-  var honeymoonEmailRan = false;
-  function honeymoonEmail() {
-    if (honeymoonEmailRan) {
-      return;
-    }
-    honeymoonEmailRan = true;
-
-    audio = new Audio("audio/recording1.mp3");
-    audio.play();
-
-    // Send first hostage email 23 seconds after
+  function addEmail(delay, from, subject, read, text, image, trigger) {
     $timeout(function() {
       $scope.emails.unshift(
       {
-        from: "UNKNOWN EMAIL",
-        subject: "No subject",
+        showPrimary: false,
+        from: from,
+        subject: subject,
         time: moment().format("h:mma"),
-        read: false,
-        text: "",
-        image: "haveHusband.png",
-        trigger: haveHusbandEmail
+        read: read,
+        text: text,
+        image: image,
+        trigger: trigger
       });
-    }, 18000);
+    }, delay);
   }
 
-  var haveHusbandEmailRan = false;
+  function honeymoonEmail() {
+    audioLibrary["honeymoonEmail"].play();
+
+    // Send first hostage email after
+    addEmail(18000, "UNKNOWN EMAIL", "No subject", false, "", "haveHusband.png", haveHusbandEmail);
+  }
+
   function haveHusbandEmail() {
-    if (haveHusbandEmailRan) {
+    audioLibrary["haveHusbandEmail"].play();
+
+    addEmail(17000, "UNKNOWN EMAIL", "PAY ATTENTION.", false, "", "dontIgnore.png", dontIgnoreEmail);
+  }
+
+  function dontIgnoreEmail() {
+    audioLibrary["dontIgnoreEmail"].play();
+
+    $timeout(function() {
+      $scope.replyPrimary = true;
+      $scope.primaryEmail = $scope.selectedEmail;
+    }, 29000);
+  }
+
+  $scope.reply = function() {
+    if (!$scope.selectedEmail.showPrimary) {
       return;
     }
-    haveHusbandEmailRan = true;
 
-    audio = new Audio("audio/recording2.mp3");
-    audio.play();
+    $scope.selectedEmail.showPrimary = false;
   }
 });

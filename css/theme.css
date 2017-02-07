@@ -67,3 +67,15 @@
 .unread {
     background: #fff;
 }
+
+.btn-highlight {
+    animation-name: btn-highlight;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes btn-highlight {
+    0% {box-shadow: 0px 0px 0px 0px #0275d8;}
+    50% {box-shadow: 0px 0px 5px 5px #0275d8;}
+    100% {box-shadow: 0px 0px 0px 0px #0275d8;}
+}

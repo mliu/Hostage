@@ -20,7 +20,7 @@
                 <h5>Like Gmail, but worse!</h5>
             </div>
             <div class="col-xs-6">
-                <p class="text-right">Billy Bob Jones (bbobjones@geemail.com)</p>
+                <p class="text-right">Mary Jones (maryjones@geemail.com)</p>
             </div>
         </div>
 
@@ -54,6 +54,9 @@
                     <br>
                     <h3>{{selectedEmail.text}}</h3>
                     <img ng-src="images/{{selectedEmail.image}}">
+                    <br>
+                    <br>
+                    <button class="btn" ng-class="{'btn-default': !selectedEmail.showPrimary, 'btn-primary btn-highlight': selectedEmail.showPrimary}" type="button" ng-click="reply()">Reply</button>
                 </div>
             </div>
         </div>
