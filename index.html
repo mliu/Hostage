@@ -13,6 +13,7 @@
     <script src="js/main.js"></script>
 </head>
 <body ng-controller="HostageController">
+    <img class="splatter" src="images/splatter.png" ng-show="killed">
     <div class="container-fluid main-container">
         <h1>GeeMail</h1>
         <div class="row">
@@ -53,8 +54,17 @@
                     </h5>
                     <br>
                     <h3>{{selectedEmail.text}}</h3>
-                    <img ng-src="images/{{selectedEmail.image}}">
+                    <img ng-src="images/{{selectedEmail.image}}" ng-show="selectedEmail.image.length">
                     <br>
+                    <h2 ng-show="finalCountdown.length">
+                        {{finalCountdown}}
+                    </h2>
+                    <h1 ng-show="endMessage.length">
+                        {{endMessage}}
+                    </h1>
+                    <br>
+                    <textarea rows="5" cols="80" ng-model="replyContent" ng-show="replyContent.length"></textarea>
+                    <div ng-show="replySent">Reply sent.</div>
                     <br>
                     <button class="btn" ng-class="{'btn-default': !selectedEmail.showPrimary, 'btn-primary btn-highlight': selectedEmail.showPrimary}" type="button" ng-click="reply()">Reply</button>
                 </div>
