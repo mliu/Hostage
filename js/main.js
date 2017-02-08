@@ -3,8 +3,11 @@ var hostageApp = angular.module('hostageApp', []);
 hostageApp.controller('HostageController', function HostageController($scope, $timeout) {
   $scope.emails = [
     {from: "Husband@geemail.com", subject: "Honeymoon photos!", time: moment().format("h:mma"), showPrimary: false, read: false, text: "Hey babe ;) Photos just came in! Love you 4evr <3 <3", image: "honeymoon.png", trigger: honeymoonEmail},
-    {from: "ReadMeFirst@geemail.com", subject: "What is this?", time: "7:09pm", showPrimary: false, read: false, text: "This is a 5 minute hostage thriller story... told entirely in an email client. Enjoy.", image: "", trigger: null},
-    {from: "MommyJones@geemail.com", subject: "Fwd: You will not believe this! WOW!", time: "7:10pm", showPrimary: false, read: true, text: "Check this out!", image: "poop.jpg", trigger: null}
+    {from: "ReadMeFirst@geemail.com", subject: "What is this?", time: "3:09pm", showPrimary: false, read: false, text: "This is a 5 minute hostage thriller story... told entirely in an email client. Enjoy.", image: "", trigger: null},
+    {from: "MommyJones@geemail.com", subject: "Fwd: You will not believe this! WOW!", time: "3:10pm", showPrimary: false, read: true, text: "Check this out!", image: "poop.jpg", trigger: null},
+    {from: "BossMan@work.com", subject: "TPS Reports", time: "9:08am", showPrimary: false, read: true, text: "Hey Mary, do you think you could send those TPS reports to me soon? Thanks.", image: "", trigger: null},
+    {from: "Payments@CreditCards.com", subject: "Your Bill Payment", time: "6:08am", showPrimary: false, read: true, text: "Mary, Your bill payment of $302.34 was accepted. Thank you for using Generic CreditCard!", image: "", trigger: null},
+    {from: "SPAM@SPAMNOW.COM", subject: "AAAAAAAAAAAAAAHHHHHHHHH", time: "4:08am", showPrimary: false, read: true, text: "OH MY GOD MARY, THIS IS THE BIGGEST DEAL IN THE HISTORY OF FOREVER! GET IT NOW!!!", image: "spam.png", trigger: null},
   ];
 
   $scope.selectedEmail = null;
