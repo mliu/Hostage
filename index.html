@@ -18,7 +18,7 @@
         <h1>GeeMail</h1>
         <div class="row">
             <div class="col-xs-6">
-                <h5>Like Gmail, but worse!</h5>
+                <h5>By Smoogle</h5>
             </div>
             <div class="col-xs-6">
                 <p class="text-right">Mary Jones (maryjones@geemail.com)</p>
@@ -66,7 +66,7 @@
                     <textarea rows="5" cols="80" ng-model="replyContent" ng-show="replyContent.length"></textarea>
                     <div ng-show="replySent">Reply sent.</div>
                     <br>
-                    <button class="btn" ng-class="{'btn-default': !selectedEmail.showPrimary, 'btn-primary btn-highlight': selectedEmail.showPrimary}" type="button" ng-click="reply()">Reply</button>
+                    <button class="btn" ng-class="{'btn-default disabled': !selectedEmail.showPrimary, 'btn-primary btn-highlight': selectedEmail.showPrimary}" type="button" ng-click="reply()">Reply</button>
                 </div>
             </div>
         </div>
